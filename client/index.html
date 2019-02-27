@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  <title>Xillow Property</title>
+</head>
+<body>
+  <div class="overall-container">
+    <img src="https://s3-us-west-1.amazonaws.com/xillow-talk-photos/xillow-nav-bar.png" />
+    <div id="photo-carousel"></div>
+    <div class="col-container">
+      <div class="col">
+        <img src="https://s3-us-west-1.amazonaws.com/xillow-talk-photos/xillow-facts-and-features.png" />
+        <div id="home-value"></div>
+        <img src="https://s3-us-west-1.amazonaws.com/xillow-talk-photos/xillow-other-info.png" />
+        <div id="contact-agent"></div>
+        <img src="https://s3-us-west-1.amazonaws.com/xillow-talk-photos/xillow-similar-homes.png" />
+        <img src="https://s3-us-west-1.amazonaws.com/xillow-talk-photos/xillow-listing-provider.png" />
+      </div>
+      <div class="col">
+        <div id="side-contact-agent"></div>
+        <!-- <div class="img-container"> -->
+        <img src="https://s3-us-west-1.amazonaws.com/xillow-talk-photos/xillow-similar-sales.png" />
+        <!-- </div> -->
+      </div>
+    </div>
+    <img src="https://s3-us-west-1.amazonaws.com/xillow-talk-photos/xillow-footer.png" />
+  </div>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/styled-components@4.1.3/dist/styled-components.min.js"></script>
+  <script src="http://ec2-13-59-200-193.us-east-2.compute.amazonaws.com/dist/bundle.js"></script>
+  <script src="http://ngrok.us-east-1.elasticbeanstalk.com/bundle.js"></script>
+  <script src="http://steve.us-east-2.elasticbeanstalk.com/bundle.js"></script>
+  <script>
+    const id = window.location.pathname.slice(1);
+    ReactDOM.render(
+      React.createElement(PhotoCarousel, { id }),
+      document.getElementById('photo-carousel')
+    );
+
+    ReactDOM.render(
+      React.createElement(AgentContact, { houseId: id }),
+      document.getElementById('side-contact-agent')
+    );
+    
+    ReactDOM.render(
+      React.createElement(App, { propertyId: id }),
+      document.getElementById('home-value')
+    );
+  </script>
+</body>
+</html>
