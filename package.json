@@ -7,10 +7,13 @@
     "express": "^4.16.4",
     "morgan": "^1.9.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "http-proxy-middleware": "^0.19.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "server": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",
