@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
@@ -15,11 +16,9 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('/:houseId', express.static('client'));
+app.use('/:houseId', express.static(path.join(__dirname, '/../client')));
 
-app.use('/api/houses/', proxy({target: 'http://localhost:8081', changeOrigin : true}))
-
-app.use('/api/agents', proxy({target: 'http://localhost:8081', changeOrigin : true}));
+app.use('/api', proxy({target: 'http://ec2-13-57-193-116.us-west-1.compute.amazonaws.com', changeOrigin : true}))
 
 app.listen(port, () => {
   console.log(`Hidey-Ho Cap'n, we are now serving on port ${port}!`);
