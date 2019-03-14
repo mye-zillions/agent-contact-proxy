@@ -1,0 +1,13 @@
+config:
+  target: 'http://localhost:8888'
+  processor: './artilleryFunctions.js'
+  phases:
+    - duration: 60
+      arrivalRate: 500
+scenarios:
+  - flow:
+    - function: "generateRandomData"
+    - post:
+        url: "/api/houses"
+        json:
+          "{{ payload }}"
